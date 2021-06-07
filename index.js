@@ -1,7 +1,10 @@
-//Setting up the express server
+//Setting up the express app
 const express=require("express");
 const port=5000;
 const app=express();
+
+//sending all the requests with root as / to routes/index.js
+app.use("/",require("./routes/index"));
 
 
 //Firing the express app
