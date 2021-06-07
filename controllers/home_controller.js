@@ -1,3 +1,3 @@
 module.exports.home=function(req,res){
-    return res.end("Heyya!!");
+    return res.render("home");
 }
