@@ -1,0 +1,347 @@
+body{
+    font-family: 'Lato', sans-serif;
+    color:grey;
+}
+
+h1
+{
+    text-align:center;
+    color:grey;
+}
+
+
+
+
+form
+{
+    width:60%;
+    margin:auto;
+    display:flex;
+    flex-direction: column;
+}
+form label
+{
+    font-weight:bolder;
+}
+
+form input:focus, select:focus
+{
+    outline-width: 0;
+}
+::placeholder
+{
+    opacity:0.4;
+}
+
+form input,form select
+{
+    border:none;
+    width:100%;
+    font-weight:bolder;
+    color:grey;
+    font-size:15px;
+    font-family: 'Lato', sans-serif;
+    margin:5px 0;
+    background:transparent;
+}
+
+.second-form-row
+{
+    display:flex;
+}
+
+.second-form-row .form-field
+{
+    width:50%;
+}
+
+.second-form-row .form-field:nth-child(1)
+{
+  border-top:none;
+  border-right:none;
+}
+
+.second-form-row .form-field:nth-child(2)
+{
+  border-top:none;
+}
+.form-field
+{
+    height:50px;
+    border:1px solid grey;
+    padding:15px 20px 10px 20px;
+
+}
+.form-field:hover{
+  background:#F0F0F0;
+}
+
+
+
+
+/* Creating custom select for category*/
+/* The container must be positioned relative: */
+.custom-select {
+  position: relative;
+  font-family: Arial;
+}
+
+.custom-select select {
+  display: none; /*hide original SELECT element: */
+}
+
+/* Style the arrow inside the select element: */
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: grey transparent transparent transparent;
+}
+
+/* Point the arrow upwards when the select box is open (active): */
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent grey transparent;
+  top: 7px;
+}
+
+/* style the items (options), including the selected item: */
+.select-items div,.select-selected {
+  color: grey;
+  font-weight:bolder;
+  padding: 10px 1px;
+  border: 1px solid transparent;
+  border-color: transparent rgba(0, 0, 0, 0.6) transparent rgba(0, 0, 0, 0.6);
+  cursor: pointer; 
+  
+}
+.select-items div{
+  margin-left:-20.9px;
+  width:105.7%;
+  z-index:400;
+  background:white;
+  padding:8px;
+}
+
+.select-selected
+{
+    border-right:none;
+    border-left:none;
+}
+.select-items div:first-child
+{
+    border-top-color:rgba(0, 0, 0, 0.6);
+}
+.select-items div:last-child{
+
+    border-bottom-color:rgba(0, 0, 0, 0.6);
+}
+
+/* Style items (options): */
+.select-items {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background:white;
+}
+
+/* Hide the items when the select box is closed: */
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+  background-color: dodgerblue;
+  color:white;
+}
+
+
+
+/*Changing the color of the calendar icon in the date field*/
+
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter:brightness(50%);
+}
+
+::-webkit-calendar-picker-indicator {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 24 24"><path fill="%23bbbbbb" d="M20 3h-1V1h-2v2H7V1H5v2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 18H4V8h16v13z"/></svg>');
+}
+
+
+/*change the input highlight color for date input field */
+
+input::-webkit-datetime-edit-day-field:focus,
+input::-webkit-datetime-edit-month-field:focus,
+input::-webkit-datetime-edit-year-field:focus {
+    background-color: transparent;
+    color: grey;
+    outline: none;
+}
+
+
+
+
+
+
+
+#buttons-container
+{
+    display:flex;
+    justify-content:center;
+    margin:10px auto;
+}
+
+.add-button
+{
+    background:	#585858;
+}
+.delete-button
+{
+    background:red;
+}
+#buttons-container button
+{
+    height:60px;
+    width:200px;
+    font-size:16px;
+    color:white;
+    margin:10px;
+    cursor: pointer;
+    font-family: 'Lato', sans-serif;
+    font-weight:bolder; 
+    word-spacing:3px;
+    letter-spacing:1px;
+
+}
+.add-button:hover,.delete-button:hover
+{
+    transform:scale(1.02);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+#task-box-container
+{
+  width:50%; 
+  margin:10px auto;
+}
+
+.task-box
+{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding: 10px 15px;
+  border-top:1px solid grey;
+}
+
+.task-box input
+{
+  display:inline-block;
+  width:5%;
+  margin:11px 19px 2px 4px; 
+  transform:scale(1.55);
+  
+}
+
+.task-box-left
+{
+  display:flex;
+  width:40%;
+}
+ 
+.task-box-left-info span
+{
+  display:inline-block;
+  margin:3.5px;
+}
+
+.task-box-left-info span:nth-of-type(1)
+{
+  font-weight:bolder;
+}
+
+.task-box-left-info span:nth-of-type(2)
+{
+    opacity:0.85;
+}
+
+
+button.task-box-category
+{
+  height:40px;
+  padding:5px 30px;
+  color:white;
+  font-family: 'Lato', sans-serif;
+  background:purple;
+  text-transform: uppercase;
+  border:none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media(max-width:1000px)
+{
+  form{
+    width:90%;
+  }
+  #task-box-container{
+    width:90%;
+  }
+  .task-box input{
+    transform:scale(2);
+  }
+}
