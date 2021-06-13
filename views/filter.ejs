@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home page</title>
+
+    <link href='https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/ui-lightness/jquery-ui.css' rel='stylesheet'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" > </script>
+
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&family=Roboto+Condensed&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">
+
+
+    <script src="https://kit.fontawesome.com/cfc8a28006.js" crossorigin="anonymous"></script> 
+
+    <link rel="stylesheet"href="/css/home.css">
+
+</head>
+
+<body>
+
+    <div id="app-container">
+    
+        <div id="body-header">
+            <h1>TODO App</h1>
+
+            <div class="hamburger-icon" id="toggle">
+                <span class="top"></span>
+                <span class="middle"></span>
+                <span class="bottom"></span>
+            </div> 
+            
+            <div class="overlay" id="overlay">
+                <nav class="overlay-menu">
+                <ul>
+                    <li ><a href="/">➤ &nbsp; Home</a></li>
+                    <li ><a href="/filter/overdue">➤ &nbsp; Overdue</a></li>
+                    <li><a href="/filter/today">➤ &nbsp; Today</a></li>
+                    <li><a href="/filter/date">➤ &nbsp; Search for a date</a></li>
+                    <li><a href="/filter/month">➤ &nbsp; Search for a month</a></li>
+                </ul>
+                </nav>
+            </div>
+
+        </div>
+
+
+
+
+
+        <form id="query-form" action="/filter/results/<%=query_name%>" method="get" autocomplete="off">
+
+            <% if(query_name=="date"){ %>
+                <div class="form-field">
+                    <label for="Date">DUE DATE</label><br>
+                    <input type="text" name="Date" id="my_date_picker" placeholder="dd/mm/yyyy">
+                </div>
+            <% } else if(query_name=="month"){ %>
+                <div class="form-field">
+                    <label for="Month">Month</label><br>
+                    <input id="Month" name="Month" type="month">
+                </div>
+            <% } %>
+
+
+        </form>
+        
+
+
+
+
+
+        
+        <% if(query_name=="date" || query_name=="month"){ %>
+        <div id="buttons-container">
+
+                <button class="search-button" form="query-form">
+                    <i class="fas fa-search"></i> SEARCH
+                </button>
+                    
+        </div>
+        <% } %>
+
+
+
+        <% if(tasks.length!=0){ %>
+            <div id="buttons-container">
+
+                <a href="">
+            
+                    <button class="delete-button" title="Select the tasks you want to delete">
+                        <i class="fas fa-trash-alt"></i> DELETE TASKS
+                    </button>
+        
+                </a>
+                    
+        </div>
+
+
+
+        <% } %>
+
+
+
+
+
+
+        <div id="task-box-container">
+
+            <!-- If no tasks, display the image with caption "Nothing to do" -->
+            <% if(tasks.length==0 && query_name!="date" && query_name!="month"){ %>
+                <figure class="no-task">
+                    <img src="/images/no_task.png" height="200px" width="200px">
+                    <figcaption>Nothing to do</figcaption>
+                </figure>
+            <% } %>
+
+            <% tasks.forEach(function(task){
+
+                let dateInWords,category_color;
+
+                //Finding the equivalent date in words to display   task.Due_date is in format dd/mm/yyyy
+                if(task.Due_date){
+                    let mapper=["","JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
+
+                    let d=task.Due_date.slice(0,2);
+                    let m=task.Due_date.slice(3,5);
+                    let y=task.Due_date.slice(6);
+
+                    dateInWords= d+' '+mapper[parseInt(m)]+', '+y;
+                }
+
+                //Deciding the color of the category info button based on the category value
+                if(task.Category)
+                {
+
+                    switch(task.Category)
+                    {
+                        case "Personal":
+                            category_color="dodgerBlue";
+                            break;
+                        case "Work":
+                            category_color="purple";
+                            break;
+                        case "School":
+                            category_color="orange";
+                            break;
+                        case "Cleaning":
+                            category_color="green";
+                            break;
+                        case "Other":
+                            category_color="palevioletred";
+                            break;             
+                    }
+                }
+            %>
+
+                <div class="task-box" >
+                
+                    <div class="task-box-left">
+                        <input type="checkbox" class="task-check" id=<%= task._id %> >
+                        <div class="task-box-left-info">
+                            <span> <%= task.Description %> </span><br>
+                            <% if(task.Due_date){ %>
+                                <span class="date-holder"><i class="far fa-calendar-alt"></i> &nbsp; <%= dateInWords %> </span>
+                            <% }else { %>
+                                <span>  No Deadline </span>
+                            <% } %>
+
+                        </div>
+                    </div>
+
+                    <div class="task-box-right">
+                        <% if(task.Category) { %>
+                        <button class="task-box-category" data-category-color=<%= category_color %>> <%= task.Category %> </button>
+                        <% } %>
+                    </div>
+        
+                </div>
+
+            <% }) %>
+
+        </div>
+
+
+
+    </div>
+
+
+
+    <script src="/js/home.js"></script>
+
+
+</body>
+</html>

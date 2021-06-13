@@ -1,21 +1,276 @@
 body{
     font-family: 'Lato', sans-serif;
     color:grey;
+    background:#444;
+    margin:0;
+    padding:0;
+    position: relative;
 }
 
-h1
+
+
+/*Setting the background image and changing it's opacity without affecting the text */
+body:before {
+  content: ' ';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.4;
+  background-image:url("/images/background.jpg");
+  background-repeat: no-repeat;
+  background-position: 50% 0;
+  background-size: cover;
+}
+
+
+
+
+
+#app-container
+{
+  position: relative;
+  background:white;
+  width:60%;
+  margin:auto;
+  min-height:100vh;
+  height:auto;
+  padding-bottom:50px;
+}
+
+/*Styling the body header*/
+#body-header
+{
+  display:flex;
+  padding:20px 10px 0px 10px;
+  justify-content:center;
+  height:62px;
+  
+}
+
+#body-header h1
 {
     text-align:center;
-    color:grey;
+    color:white;
+    word-spacing:8px;
+    margin-top:0;
+
+}
+
+/*Animating the header */
+
+#body-header
+{
+
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+  
+}
+
+@keyframes gradient {
+  0% {
+      background-position: 0% 50%;
+  }
+  50% {
+      background-position: 100% 50%;
+  }
+  100% {
+      background-position: 0% 50%;
+  }
 }
 
 
 
+
+/*Navigation menu (overlay menu) */ 
+
+ .hamburger-icon {
+	 position: fixed;
+	 top: 3.6%;
+	 right: 25.5%;
+	 height: 23px;
+	 width: 35px;
+	 cursor: pointer;
+	 z-index: 100;
+	 transition: opacity 0.25s ease;
+}
+ .hamburger-icon {
+	 opacity: 0.7;
+}
+ .hamburger-icon.active .top {
+	 transform: translateY(10px) translateX(0) rotate(45deg);
+	 background: #fff;
+}
+ .hamburger-icon.active .middle {
+	 opacity: 0;
+	 background: #fff;
+}
+ .hamburger-icon.active .bottom {
+	 transform: translateY(-10px) translateX(0) rotate(-45deg);
+	 background: #fff;
+}
+ .hamburger-icon span {
+	 background: white;
+	 border: none;
+	 height: 5px;
+	 width: 100%;
+	 position: absolute;
+	 top: 0px;
+	 left: 0;
+	 transition: all 0.1s ease;
+	 cursor: pointer;
+}
+ .hamburger-icon span:nth-of-type(2) {
+	 top: 10px;
+}
+ .hamburger-icon span:nth-of-type(3) {
+	 top: 20px;
+}
+ .overlay {
+	 position: fixed;
+	 top: 0;
+	 left: 20%;
+	 width: 60%;
+	 height: 100%;
+	 opacity: 1;
+	 visibility: hidden;
+	 transition: opacity 0.35s, visibility 0.35s, width 0.35s;
+	 z-index: 50;
+}
+ .overlay:before {
+	 content: '';
+	 background: #ee7752;
+	 left: 200%;
+	 top: 0;
+	 width: 52%;
+	 height: 100%;
+	 position: absolute;
+	
+}
+ .overlay:after {
+	 content: '';
+	 background: #ee7752;
+	 right: 200%;
+	 top: 0;
+	 width: 50%;
+	 height: 100%;
+	 position: absolute;
+	 
+}
+ .overlay.open {
+	 opacity: 1;
+	 visibility: visible;
+	 height: 100%;
+}
+ .overlay.open:before {
+	 left: 0;
+}
+ .overlay.open:after {
+	 right: 0;
+}
+ .overlay.open li {
+	 animation: fadeInRight 0.5s ease forwards;
+	 animation-delay: 0.35s;
+}
+ .overlay.open li:nth-of-type(2) {
+	 animation-delay: 0.45s;
+}
+ .overlay.open li:nth-of-type(3) {
+	 animation-delay: 0.55s;
+}
+ .overlay.open li:nth-of-type(4) {
+	 animation-delay: 0.65s;
+}
+ .overlay nav {
+	 position: relative;
+	 height: 70%;
+	 top: 50%;
+	 transform: translateY(-50%);
+	 font-size: 35px;
+	 font-family: 'Secular One', sans-serif;
+   word-spacing:4px;
+	 font-weight: 400;
+	 z-index: 100;
+}
+ .overlay ul {
+	 list-style: none;
+	 padding: 0;
+	 margin: 0 auto;
+	 display: inline-block;
+	 position: relative;
+	 height: 100%;
+}
+ .overlay ul li {
+	 display: flex;
+	 height: 13%;
+	 min-height: 50px;
+	 position: relative;
+	 opacity: 0;
+   width:51vw;
+   padding:16px 20px 5px 45px;
+   margin:10px;
+   border-bottom:2px solid white;
+   
+   
+}
+.overlay ul li:nth-child(1)
+{
+  border-top:2px solid white;
+}
+ .overlay ul li a {
+	 display: block;
+	 position: relative;
+	 color: rgba(255,255,255,0.75);
+	 text-decoration: none;
+	 overflow: hidden;
+   text-transform: uppercase;
+}
+ 
+.overlay ul li a:hover
+{
+  color:white;
+
+}
+
+ .overlay ul li a:after {
+	 content: '';
+	 position: absolute;
+	 bottom: 0;
+	 left: 50%;
+	 width: 0%;
+	 transform: translateX(-50%);
+	 height: 3px;
+	 background: #fff;
+ 
+}
+
+ @keyframes fadeInRight {
+	 0% {
+		 opacity: 0;
+		 left:20%;
+	}
+	 100% {
+		 opacity: 1;
+		 left: 0;
+	}
+}
+ 
+
+
+
+
+
+
+
+
+/*Styling the Form */
 
 form
 {
-    width:60%;
-    margin:auto;
+    margin:10px auto;
     display:flex;
     flex-direction: column;
 }
@@ -78,7 +333,6 @@ form input,form select
 
 
 
-
 /* Creating custom select for category*/
 /* The container must be positioned relative: */
 .custom-select {
@@ -120,10 +374,11 @@ form input,form select
 }
 .select-items div{
   margin-left:-20.9px;
-  width:105.7%;
+  width:101%;
   z-index:400;
   background:white;
-  padding:8px;
+  padding:8px 18px;
+  
 }
 
 .select-selected
@@ -148,6 +403,7 @@ form input,form select
   right: 0;
   z-index: 100;
   background:white;
+  
 }
 
 /* Hide the items when the select box is closed: */
@@ -161,21 +417,26 @@ form input,form select
 }
 
 
-
-/*Changing the color of the calendar icon in the date field*/
-
-input[type="date"]::-webkit-inner-spin-button,
-input[type="date"]::-webkit-calendar-picker-indicator {
-    filter:brightness(50%);
-}
-
-::-webkit-calendar-picker-indicator {
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 24 24"><path fill="%23bbbbbb" d="M20 3h-1V1h-2v2H7V1H5v2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 18H4V8h16v13z"/></svg>');
+/*Changing the calendar header color (yellow default) of the jquery datepicker*/
+.ui-widget-header {
+  background: deepskyblue;
+  border-color:white;
 }
 
 
-/*change the input highlight color for date input field */
+/*Removing the blue background when we select something form the previous values(recommendations part)*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active 
+input:-webkit-autofill:visited{
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-text-fill-color: grey !important;
+}
 
+
+
+/*Change date input highlight color (default is blue) */
 input::-webkit-datetime-edit-day-field:focus,
 input::-webkit-datetime-edit-month-field:focus,
 input::-webkit-datetime-edit-year-field:focus {
@@ -188,7 +449,44 @@ input::-webkit-datetime-edit-year-field:focus {
 
 
 
+/*Show the claendar upon input focus for month-picker (by default it loads only on the calendar icon click) */
+input[type="month"] {
+  position: relative;
+}
 
+/* change color of symbol on hover */
+input[type="month"]:hover:after {
+  color: #bf1400;
+}
+
+/* make the native arrow invisible and stretch it over the whole field so you can click anywhere in the input field to trigger the native datepicker*/
+input[type="month"]::-webkit-calendar-picker-indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: auto;
+  height: auto;
+  color: transparent;
+  background: transparent;
+}
+
+
+/* adjust clear button */
+input[type="month"]::-webkit-clear-button {
+   z-index: 1;
+}
+
+
+
+
+
+
+
+
+
+/*Styling the buttons container*/
 
 #buttons-container
 {
@@ -204,6 +502,10 @@ input::-webkit-datetime-edit-year-field:focus {
 .delete-button
 {
     background:red;
+}
+.search-button
+{
+  background:#0E1875;
 }
 #buttons-container button
 {
@@ -233,12 +535,23 @@ input::-webkit-datetime-edit-year-field:focus {
 
 
 
-
+/*Styling the Task Box container (containing the list of tasks ) */
 
 #task-box-container
 {
-  width:50%; 
-  margin:10px auto;
+  width:80%; 
+  margin:15px auto;
+}
+
+.no-task
+{
+  margin:20px auto;
+  text-align:center;
+  
+}
+.no-task figcaption
+{
+  margin:6px;
 }
 
 .task-box
@@ -246,8 +559,9 @@ input::-webkit-datetime-edit-year-field:focus {
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding: 10px 15px;
+  padding: 10px 25px;
   border-top:1px solid grey;
+
 }
 
 .task-box input
@@ -285,7 +599,7 @@ input::-webkit-datetime-edit-year-field:focus {
 button.task-box-category
 {
   height:40px;
-  padding:5px 30px;
+  width:120px;
   color:white;
   font-family: 'Lato', sans-serif;
   background:purple;
@@ -302,46 +616,50 @@ button.task-box-category
 
 
 
+/*Media queries*/
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@media(max-width:1000px)
+@media(max-width:950px)
 {
-  form{
-    width:90%;
-  }
   #task-box-container{
     width:90%;
   }
   .task-box input{
     transform:scale(2);
   }
+  .task-box-left{
+    width:60%;
+  }
+  button.task-box-category
+  {
+    width:95px;
+  }
+  #app-container
+  {
+    width:90%;
+  }
+  .overlay{
+    width:90%;
+    left:5%;
+  }
+  .hamburger-icon
+  {
+    right:14%;
+  }
+  
+  .overlay ul li 
+  {
+    width:70vw;
+    font-size:25px;
+  }
 }
+
+
+
+
+
+
+
+
+
+
+
