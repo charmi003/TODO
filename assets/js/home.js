@@ -1,3 +1,101 @@
+
+
+/*Jquery datepicker*/
+
+$(document).ready(function() {
+          
+  $(function() {
+      $( "#my_date_picker" ).datepicker({
+        dateFormat: 'dd/mm/yy'
+      });
+  });
+})
+
+
+
+
+
+/*Strikethrough the text on on checking the checkbox*/
+$(".task-check").change(function(event){
+
+  if(this.checked)
+  {
+    $(this).parent().find("span").css({
+      "text-decoration-line":"line-through",
+      "font-weight":"400"
+    })
+  }
+  else
+  {
+    $(this).parent().find("span").css({
+      "text-decoration-line":"none",
+      "font-weight":"bolder"
+    })
+
+  }
+
+})
+
+
+
+
+
+/*Sending the ids of the tasks to be deleted to the server side when the delete button is clicked*/
+$(".delete-button").on("click",function(event){
+
+  /*  If no tasks to delete, simply return */
+  let t=$(".task-check:checked");
+  if(t.length==0)
+    return;
+
+  let ans=confirm("Are you sure you want to delete ?");
+  if(!ans)
+  {
+      $(this).parent().attr({
+        href:link
+      })
+    
+  }
+
+  let arr=$(".task-check:checked");
+  let link="/deleteTasks/?"
+
+  for(let i=0;i<arr.length;i++)
+  {
+     let p=arr.eq(i).attr("id");
+     link+="id_arr="+p+"&";
+  }
+  link=link.substring(0,link.length-1);
+
+  $(this).parent().attr({
+    href:link
+  })
+})
+
+
+
+
+
+/*Rendering the color to the category button depending on the category,
+  the color has been decided and it's stored in the "category-color" data attribute */ 
+let task_category_buttons=$(".task-box-category");
+
+for(let i=0;i<task_category_buttons.length;i++)
+{
+  let btn=task_category_buttons.eq(i);
+  let c=btn.data("category-color");
+  btn.css({
+    "background":c
+  })
+
+
+}
+
+
+
+
+
+
 /*Javascript for custom select created*/
 
 var x, i, j, l, ll, selElmnt, a, b, c;
@@ -87,101 +185,6 @@ $('#toggle').click(function() {
  });
 
 
-
-
-
-
-
-/*Jquery datepicker*/
-
-$(document).ready(function() {
-          
-  $(function() {
-      $( "#my_date_picker" ).datepicker({
-        dateFormat: 'dd/mm/yy'
-      });
-  });
-})
-
-
-
-
-
-/*Strikethrough the text on checking the checkbox*/
-$(".task-check").change(function(event){
-
-  if(this.checked)
-  {
-    $(this).parent().find("span").css({
-      "text-decoration-line":"line-through",
-      "font-weight":"400"
-    })
-  }
-  else
-  {
-    $(this).parent().find("span").css({
-      "text-decoration-line":"none",
-      "font-weight":"bolder"
-    })
-
-  }
-
-})
-
-
-
-
-
-/*Sending the ids of the tasks to be deleted to the server side when the delete button is clicked*/
-$(".delete-button").on("click",function(event){
-
-  /*  If no tasks to delete, simply return */
-  let t=$(".task-check:checked");
-  if(t.length==0)
-    return;
-
-  let ans=confirm("Are you sure you want to delete ?");
-  if(!ans)
-  {
-      $(this).parent().attr({
-        href:link
-      })
-    
-  }
-
-  let arr=$(".task-check:checked");
-  let link="/deleteTasks/?"
-
-  for(let i=0;i<arr.length;i++)
-  {
-     let p=arr.eq(i).attr("id");
-     link+="id_arr="+p+"&";
-  }
-  link=link.substring(0,link.length-1);
-
-  $(this).parent().attr({
-    href:link
-  })
-})
-
-
-
-
-
-/*Rendering the color to the category button depending on the category,
-  the color has been decided and it's stored in the "category-color" data attribute */ 
-let task_category_buttons=$(".task-box-category");
-
-for(let i=0;i<task_category_buttons.length;i++)
-{
-  let btn=task_category_buttons.eq(i);
-  let c=btn.data("category-color");
-  btn.css({
-    "background":c
-  })
-
-
-}
 
 
 

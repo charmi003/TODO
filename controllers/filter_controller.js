@@ -1,6 +1,6 @@
 const Task = require("../models/task");
 
-/*Finding today's date */
+/*Finding today's date in dd/mm/yyyy format */
 var date = new Date();
 var day = date.getDate(),
     month = date.getMonth() + 1,
@@ -61,6 +61,7 @@ module.exports.today=function(req,res){
 
 
 
+
 /*Action for the route /filter/date */
 module.exports.date=function(req,res){
 
@@ -70,6 +71,7 @@ module.exports.date=function(req,res){
     })
     
 }
+
 
 
 

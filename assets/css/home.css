@@ -9,7 +9,7 @@ body{
 
 
 
-/*Setting the background image for body and changing it's opacity without affecting the opacity of componenets inside it */
+/*Setting the background image of the body and changing it's opacity without affecting the opacity of the components inside it */
 body:before {
   content: ' ';
   display: block;
@@ -28,7 +28,7 @@ body:before {
 
 
 
-/*Styles for the app-container (the wrapper for the app)*/
+/*Styling the app-container (Wrapper for the app) */
 #app-container
 {
   position: relative;
@@ -268,6 +268,7 @@ body:before {
 
 
 /*Styling the Form */
+
 form
 {
     margin:10px auto;
@@ -417,9 +418,6 @@ form input,form select
 }
 
 
-
-
-
 /*Changing the calendar header color (yellow default) of the jquery datepicker*/
 .ui-widget-header {
   background: deepskyblue;
@@ -427,7 +425,7 @@ form input,form select
 }
 
 
-/*Removing the blue background when we select something form the previous values(recommendations based on history)*/
+/*Removing the blue background when we select something form the previous values(recommendations based on the history)*/
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
@@ -436,7 +434,6 @@ input:-webkit-autofill:visited{
     transition: background-color 5000s ease-in-out 0s;
     -webkit-text-fill-color: grey !important;
 }
-
 
 
 
@@ -452,10 +449,13 @@ input::-webkit-datetime-edit-year-field:focus {
 
 
 
+
 /*Show the claendar upon input focus for month-picker (by default it loads only on the calendar icon click) */
 input[type="month"] {
   position: relative;
 }
+
+
 
 /* make the native arrow invisible and stretch it over the whole field so you can click anywhere in the input field to trigger the native datepicker*/
 input[type="month"]::-webkit-calendar-picker-indicator {
@@ -475,8 +475,6 @@ input[type="month"]::-webkit-calendar-picker-indicator {
 input[type="month"]::-webkit-clear-button {
    z-index: 1;
 }
-
-
 
 
 
@@ -535,7 +533,7 @@ input[type="month"]::-webkit-clear-button {
 
 
 
-/*Styling the Task Box container (containing the list of tasks ) */
+/*Styling the Task Box container (containing all the tasks ) */
 
 #task-box-container
 {
@@ -620,19 +618,6 @@ button.task-box-category
 
 @media(max-width:950px)
 {
-  #task-box-container{
-    width:90%;
-  }
-  .task-box input{
-    transform:scale(2);
-  }
-  .task-box-left{
-    width:60%;
-  }
-  button.task-box-category
-  {
-    width:95px;
-  }
   #app-container
   {
     width:90%;
@@ -651,6 +636,20 @@ button.task-box-category
     width:70vw;
     font-size:25px;
   }
+  #task-box-container{
+    width:90%;
+  }
+  .task-box input{
+    transform:scale(2);
+  }
+  .task-box-left{
+    width:60%;
+  }
+  button.task-box-category
+  {
+    width:95px;
+  }
+  
 }
 
 
