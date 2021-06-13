@@ -7,7 +7,7 @@ module.exports.home=function(req,res){
     Task.find({},function(err,tasks){
         if(err)
         {
-            console.log(`Error in fetching the tasks!!`);
+            console.log(`Error in fetching the tasks!! ${err}`);
             return;
         }
         return res.render("home",{
@@ -35,7 +35,7 @@ module.exports.addTask=function(req,res){
     new_task.save(function(err,obj){
         if(err)
         {
-            console.log(`Error in creating the new task!!`);
+            console.log(`Error in creating the new task!! ${err}`);
             return;
         }
         return res.redirect("back");
@@ -51,7 +51,7 @@ module.exports.deleteTasks=function(req,res){
         Task.deleteMany({_id: {$in:req.query.id_arr}  },function(err){
             if(err)
             {
-                console.log("Error in deleting the tasks!!");
+                console.log(`Error in deleting the tasks!! ${err}`);
                 return;
             }
             res.redirect("back");

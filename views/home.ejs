@@ -96,7 +96,7 @@
 
         <div id="buttons-container">
 
-                <button class="add-button" form="task-details-form" title="Fill in the above details to add a task">
+                <button type="submit" class="add-button" form="task-details-form" title="Fill in the above details to add a task">
                     <i class="fas fa-plus"></i> ADD TASK
                 </button>
             
@@ -173,7 +173,7 @@
                         <div class="task-box-left-info">
                             <span> <%= task.Description %> </span><br>
                             <% if(task.Due_date){ %>
-                                <span class="date-holder"><i class="far fa-calendar-alt"></i> &nbsp; <%= dateInWords %> </span>
+                                <span class="date-holder"><i class="far fa-calendar-alt"></i> <%= dateInWords %> </span>
                             <% }else { %>
                                 <span>  No Deadline </span>
                             <% } %>

@@ -54,7 +54,7 @@
 
 
 
-        <form id="query-form" action="/filter/results/<%=query_name%>" method="get" autocomplete="off">
+        <form id="query-form" action="/filter/results/<%= query_name %>" method="get" autocomplete="off">
 
             <% if(query_name=="date"){ %>
                 <div class="form-field">
@@ -77,7 +77,7 @@
         <% if(query_name=="date" || query_name=="month"){ %>
         <div id="buttons-container">
 
-                <button class="search-button" form="query-form">
+                <button type="submit" class="search-button" form="query-form">
                     <i class="fas fa-search"></i> SEARCH
                 </button>
                     
@@ -166,7 +166,7 @@
                         <div class="task-box-left-info">
                             <span> <%= task.Description %> </span><br>
                             <% if(task.Due_date){ %>
-                                <span class="date-holder"><i class="far fa-calendar-alt"></i> &nbsp; <%= dateInWords %> </span>
+                                <span class="date-holder"><i class="far fa-calendar-alt"></i> <%= dateInWords %> </span>
                             <% }else { %>
                                 <span>  No Deadline </span>
                             <% } %>

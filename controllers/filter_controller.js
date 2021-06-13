@@ -1,3 +1,4 @@
+const { Error } = require("mongoose");
 const Task = require("../models/task");
 
 /*Finding today's date in dd/mm/yyyy format */
@@ -17,6 +18,7 @@ var today_date = day + "/" + month + "/" + year;
 module.exports.overdue=function(req,res){
 
     Task.find({
+        Due_date:{$ne:""},
         $or:[
             { Year:{$lt:year} },
 
@@ -28,7 +30,7 @@ module.exports.overdue=function(req,res){
     } , function(err,tasks){
         if(err)
         {
-            console.log('Error in finding the tasks!!');
+            console.log(`Error in finding the tasks!! ${err}`);
             return;
         }
         return res.render("filter",{
@@ -48,7 +50,7 @@ module.exports.today=function(req,res){
     Task.find({Due_date:today_date},function(err,tasks){
         if(err)
         {
-            console.log('Error in finding the tasks!!');
+            console.log(`Error in finding the tasks!! ${err}`);
             return;
         }
         return res.render("filter",{
@@ -109,7 +111,7 @@ module.exports.results=function(req,res){
     Task.find(find_obj,null,{ sort:{Due_date:1} },function(err,tasks){
         if(err)
         {
-            console.log('Error in finding the tasks!!');
+            console.log(`Error in finding the tasks!! ${err}`);
             return;
         }
         return res.render("filter",{
