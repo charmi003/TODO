@@ -9,7 +9,7 @@ body{
 
 
 
-/*Setting the background image and changing it's opacity without affecting the text */
+/*Setting the background image for body and changing it's opacity without affecting the opacity of componenets inside it */
 body:before {
   content: ' ';
   display: block;
@@ -28,7 +28,7 @@ body:before {
 
 
 
-
+/*Styles for the app-container (the wrapper for the app)*/
 #app-container
 {
   position: relative;
@@ -39,6 +39,7 @@ body:before {
   height:auto;
   padding-bottom:50px;
 }
+
 
 /*Styling the body header*/
 #body-header
@@ -59,7 +60,7 @@ body:before {
 
 }
 
-/*Animating the header */
+/*Animating the body header */
 
 #body-header
 {
@@ -267,7 +268,6 @@ body:before {
 
 
 /*Styling the Form */
-
 form
 {
     margin:10px auto;
@@ -334,7 +334,7 @@ form input,form select
 
 
 /* Creating custom select for category*/
-/* The container must be positioned relative: */
+
 .custom-select {
   position: relative;
   font-family: Arial;
@@ -417,6 +417,9 @@ form input,form select
 }
 
 
+
+
+
 /*Changing the calendar header color (yellow default) of the jquery datepicker*/
 .ui-widget-header {
   background: deepskyblue;
@@ -424,7 +427,7 @@ form input,form select
 }
 
 
-/*Removing the blue background when we select something form the previous values(recommendations part)*/
+/*Removing the blue background when we select something form the previous values(recommendations based on history)*/
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
@@ -433,6 +436,7 @@ input:-webkit-autofill:visited{
     transition: background-color 5000s ease-in-out 0s;
     -webkit-text-fill-color: grey !important;
 }
+
 
 
 
@@ -448,15 +452,9 @@ input::-webkit-datetime-edit-year-field:focus {
 
 
 
-
 /*Show the claendar upon input focus for month-picker (by default it loads only on the calendar icon click) */
 input[type="month"] {
   position: relative;
-}
-
-/* change color of symbol on hover */
-input[type="month"]:hover:after {
-  color: #bf1400;
 }
 
 /* make the native arrow invisible and stretch it over the whole field so you can click anywhere in the input field to trigger the native datepicker*/
@@ -477,6 +475,8 @@ input[type="month"]::-webkit-calendar-picker-indicator {
 input[type="month"]::-webkit-clear-button {
    z-index: 1;
 }
+
+
 
 
 
@@ -521,7 +521,7 @@ input[type="month"]::-webkit-clear-button {
     letter-spacing:1px;
 
 }
-.add-button:hover,.delete-button:hover
+.add-button:hover,.delete-button:hover,.search-button:hover
 {
     transform:scale(1.02);
 

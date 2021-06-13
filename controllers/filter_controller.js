@@ -1,5 +1,6 @@
 const Task = require("../models/task");
 
+/*Finding today's date */
 var date = new Date();
 var day = date.getDate(),
     month = date.getMonth() + 1,
@@ -12,7 +13,7 @@ var today_date = day + "/" + month + "/" + year;
 
 
 
-
+/*Action for the route /filter/overdue */
 module.exports.overdue=function(req,res){
 
     Task.find({
@@ -41,7 +42,7 @@ module.exports.overdue=function(req,res){
 
 
 
-
+/*Action for the route /filter/today */
 module.exports.today=function(req,res){
 
     Task.find({Due_date:today_date},function(err,tasks){
@@ -60,7 +61,7 @@ module.exports.today=function(req,res){
 
 
 
-
+/*Action for the route /filter/date */
 module.exports.date=function(req,res){
 
     return res.render("filter",{
@@ -72,7 +73,7 @@ module.exports.date=function(req,res){
 
 
 
-
+/*Action for the route /filter/month */
 module.exports.month=function(req,res){
 
     return res.render("filter",{
@@ -84,7 +85,7 @@ module.exports.month=function(req,res){
 
 
 
-
+/*Action for the route /filter/results/:query_name */
 module.exports.results=function(req,res){
 
     let q=req.params.query_name,find_obj;

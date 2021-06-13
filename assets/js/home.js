@@ -107,7 +107,7 @@ $(document).ready(function() {
 
 
 
-/*Strikethrough the text on on checking the checkbox*/
+/*Strikethrough the text on checking the checkbox*/
 $(".task-check").change(function(event){
 
   if(this.checked)

@@ -2,7 +2,7 @@
 const Task=require("../models/task");
 
 
-
+/*Action for the route / */
 module.exports.home=function(req,res){
     Task.find({},function(err,tasks){
         if(err)
@@ -19,7 +19,7 @@ module.exports.home=function(req,res){
 
 
 
-
+/*Action for the route /addTask */
 module.exports.addTask=function(req,res){
     
     let new_task=new Task({
@@ -44,7 +44,7 @@ module.exports.addTask=function(req,res){
 
 
 
-
+/*Action for the route /deleteTasks */
 module.exports.deleteTasks=function(req,res){
 
         Task.deleteMany({_id: {$in:req.query.id_arr}  },function(err){
